@@ -1,0 +1,16 @@
+{
+  "name": "mp-sdwu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "微信小程序高级开发 课程课件（Marp）",
+  "scripts": {
+    "pdf": "node scripts/build.js pdf",
+    "html": "node scripts/build.js html",
+    "pptx": "node scripts/build.js pptx",
+    "one": "marp --pdf",
+    "watch": "marp --server ."
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^3.4.0"
+  }
+}

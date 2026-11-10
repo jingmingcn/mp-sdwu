@@ -1,0 +1,34 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">留言板</view>
+    <button class="btn" bindtap="go" data-url="/pages/publish/publish">发布留言</button>
+    <button class="btn btn--ghost" bindtap="go" data-url="/pages/mine/mine">我的留言</button>
+    <radio-group bindchange="onPageMode">
+      <label class="opt"><radio value="cursor" checked />游标分页</label>
+      <label class="opt"><radio value="skip" />skip + limit</label>
+    </radio-group>
+    <view class="kv"><text class="kv__k">本次查询耗时</text><text class="kv__v">{{ms}}ms</text></view>
+  </view>
+
+  <view class="card" wx:for="{{list}}" wx:key="_id">
+    <view class="m__head">
+      <text class="m__name">{{item.authorName}}</text>
+      <text class="m__time">{{item.timeText}}</text>
+    </view>
+    <view class="m__content">{{item.content}}</view>
+    <view class="m__imgs" wx:if="{{item.thumbs.length}}">
+      <image wx:for="{{item.thumbs}}" wx:for-item="src" wx:key="*this"
+             class="m__img" src="{{src}}" mode="aspectFill" lazy-load
+             data-urls="{{item.thumbs}}" data-src="{{src}}" bindtap="preview" />
+    </view>
+    <view class="m__foot">
+      <text class="m__act {{item.liked ? 'is-on' : ''}}" data-id="{{item._id}}" bindtap="onLike">
+        ♥ {{item.likeCount}}
+      </text>
+      <text class="m__act" data-id="{{item._id}}" bindtap="goDetail">💬 {{item.commentCount}}</text>
+    </view>
+  </view>
+
+  <view class="hint" wx:if="{{hasMore}}" bindtap="loadMore">加载更多…</view>
+  <view class="hint" wx:else>没有更多了</view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "name": "mp-sdwu-lab-01",
+  "version": "1.0.0",
+  "private": true,
+  "description": "实验一 运行机制观测与工程骨架",
+  "dependencies": {
+    "miniprogram-api-promise": "^1.0.4"
+  }
+}

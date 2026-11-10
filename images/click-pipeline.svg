@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 980" width="720" height="980" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <!-- 背景 -->
+  <rect width="720" height="980" fill="#fafafa"/>
+
+  <!-- 标题 -->
+  <text x="360" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">微信小程序 · 用户点击事件完整流程</text>
+
+  <!-- ========== 定义箭头 ========== -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- ========== 步骤1：用户点击 ========== -->
+  <rect x="160" y="60" width="400" height="55" rx="10" fill="#fff8e1" stroke="#f9a825" stroke-width="2"/>
+  <text x="360" y="85" text-anchor="middle" font-size="15" font-weight="bold" fill="#f57f17">① 用户点击按钮</text>
+  <text x="360" y="105" text-anchor="middle" font-size="12" fill="#f57f17">（用户操作）</text>
+
+  <!-- 箭头 -->
+  <line x1="360" y1="115" x2="360" y2="145" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ========== 步骤2：渲染层捕获 ========== -->
+  <rect x="160" y="150" width="400" height="70" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="360" y="175" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b5e20">② 渲染层捕获事件</text>
+  <text x="360" y="198" text-anchor="middle" font-size="13" fill="#2e7d32">序列化为 JSON 数据</text>
+
+  <!-- 箭头 -->
+  <line x1="360" y1="220" x2="360" y2="250" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ========== 步骤3：JSBridge → Native ========== -->
+  <rect x="160" y="255" width="400" height="55" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2"/>
+  <text x="360" y="280" text-anchor="middle" font-size="15" font-weight="bold" fill="#e65100">③ 经 JSBridge 发送到 Native</text>
+  <text x="360" y="298" text-anchor="middle" font-size="12" fill="#ef6c00">（通信桥梁）</text>
+
+  <!-- 箭头 -->
+  <line x1="360" y1="310" x2="360" y2="340" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ========== 步骤4：Native 转发 ========== -->
+  <rect x="160" y="345" width="400" height="55" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2"/>
+  <text x="360" y="370" text-anchor="middle" font-size="15" font-weight="bold" fill="#e65100">④ Native 转发给逻辑层</text>
+  <text x="360" y="388" text-anchor="middle" font-size="12" fill="#ef6c00">（转发事件）</text>
+
+  <!-- 箭头 -->
+  <line x1="360" y1="400" x2="360" y2="430" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ========== 步骤5：逻辑层执行 handler ========== -->
+  <rect x="160" y="435" width="400" height="70" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <text x="360" y="460" text-anchor="middle" font-size="15" font-weight="bold" fill="#0d47a1">⑤ 逻辑层找到对应 Page 的 handler</text>
+  <text x="360" y="483" text-anchor="middle" font-size="13" fill="#1565c0">并执行业务逻辑</text>
+
+  <!-- 箭头 -->
+  <line x1="360" y1="505" x2="360" y2="535" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ========== 步骤6：调用 setData ========== -->
+  <rect x="160" y="540" width="400" height="70" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <text x="360" y="565" text-anchor="middle" font-size="15" font-weight="bold" fill="#0d47a1">⑥ 调用 this.setData({ count: 1 })</text>
+  <text x="360" y="588" text-anchor="middle" font-size="13" fill="#1565c0">数据被 JSON 序列化</text>
+
+  <!-- 箭头 -->
+  <line x1="360" y1="610" x2="360" y2="640" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ========== 步骤7：回传渲染层 ========== -->
+  <rect x="160" y="645" width="400" height="55" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2"/>
+  <text x="360" y="670" text-anchor="middle" font-size="15" font-weight="bold" fill="#e65100">⑦ 经 Native / JSBridge 发回渲染层</text>
+  <text x="360" y="688" text-anchor="middle" font-size="12" fill="#ef6c00">（数据回传）</text>
+
+  <!-- 箭头 -->
+  <line x1="360" y1="700" x2="360" y2="730" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ========== 步骤8：diff + patch ========== -->
+  <rect x="160" y="735" width="400" height="70" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="360" y="760" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b5e20">⑧ 渲染层做 Diff，更新虚拟树</text>
+  <text x="360" y="783" text-anchor="middle" font-size="13" fill="#2e7d32">Patch 到真实 DOM</text>
+
+  <!-- 箭头 -->
+  <line x1="360" y1="805" x2="360" y2="835" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ========== 步骤9：用户看到变化 ========== -->
+  <rect x="160" y="840" width="400" height="55" rx="10" fill="#fff8e1" stroke="#f9a825" stroke-width="2"/>
+  <text x="360" y="865" text-anchor="middle" font-size="15" font-weight="bold" fill="#f57f17">⑨ 浏览器重排重绘</text>
+  <text x="360" y="883" text-anchor="middle" font-size="12" fill="#f57f17">用户看到界面变化</text>
+
+  <!-- 左侧图例 -->
+  <rect x="30" y="150" width="18" height="18" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="55" y="164" font-size="12" fill="#333">渲染层</text>
+
+  <rect x="30" y="180" width="18" height="18" rx="3" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.5"/>
+  <text x="55" y="194" font-size="12" fill="#333">Native / JSBridge</text>
+
+  <rect x="30" y="210" width="18" height="18" rx="3" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="55" y="224" font-size="12" fill="#333">逻辑层</text>
+
+  <rect x="30" y="240" width="18" height="18" rx="3" fill="#fff8e1" stroke="#f9a825" stroke-width="1.5"/>
+  <text x="55" y="254" font-size="12" fill="#333">用户 / 浏览器</text>
+</svg>

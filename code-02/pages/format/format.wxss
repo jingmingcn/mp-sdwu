@@ -1,0 +1,6 @@
+.row { display: flex; align-items: center; padding: 10rpx 0; font-size: 24rpx; border-bottom: 2rpx solid #f2f2f2; }
+.row__t { flex: 3; }
+.row__p { flex: 1; text-align: right; color: #c0392b; }
+.row__d { flex: 1; text-align: right; color: #999; }
+.low { background: #fff8e1; }
+.sold-out { opacity: 0.45; }

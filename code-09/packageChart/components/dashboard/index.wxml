@@ -1,0 +1,6 @@
+<view class="dash">
+  <view class="dash__title">数据看板（分包异步化）</view>
+  <view class="dash__bars">
+    <view wx:for="{{bars}}" wx:key="index" class="dash__bar" style="height:{{item}}%"></view>
+  </view>
+</view>

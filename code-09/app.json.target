@@ -1,0 +1,14 @@
+{
+  "_说明": "这是 TODO-9 的目标形态参考，改完 app.json 后可删除本文件。",
+  "pages": ["pages/index/index"],
+  "subpackages": [
+    { "root": "packageGoods", "name": "goods", "pages": ["detail/detail"] },
+    { "root": "packageUser", "name": "user", "pages": ["order/order"] },
+    { "root": "packageChart", "name": "chart", "pages": [] },
+    { "root": "packageActivity", "name": "activity", "pages": ["landing/landing"], "independent": true }
+  ],
+  "preloadRule": {
+    "pages/index/index": { "network": "all", "packages": ["goods"] }
+  },
+  "lazyCodeLoading": "requiredComponents"
+}

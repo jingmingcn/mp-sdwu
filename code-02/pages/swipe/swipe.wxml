@@ -1,0 +1,40 @@
+<wxs src="../../utils/swipe.wxs" module="swipe" />
+
+<view class="page">
+  <view class="card">
+    <view class="card__title">实现方式</view>
+    <radio-group bindchange="onModeChange">
+      <label class="opt"><radio value="logic" checked="{{mode==='logic'}}" />逻辑层 setData</label>
+      <label class="opt"><radio value="wxs" checked="{{mode==='wxs'}}" />WXS 响应事件</label>
+    </radio-group>
+    <picker mode="selector" range="{{sizes}}" value="{{sizeIndex}}" bindchange="onSizeChange">
+      <view class="kv"><text class="kv__k">列表长度</text><text class="kv__v">{{sizes[sizeIndex]}}</text></view>
+    </picker>
+    <button class="btn btn--ghost" bindtap="makeBusy">制造逻辑层繁忙（5 秒）</button>
+    <view class="hint">点击后立即快速滑动，对比两种实现的跟手程度。</view>
+  </view>
+
+  <!-- 逻辑层版本 -->
+  <block wx:if="{{mode === 'logic'}}">
+    <view class="srow" wx:for="{{list}}" wx:key="id"
+          data-index="{{index}}"
+          bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd">
+      <view class="cell" style="transform:translateX({{offsets[index] || 0}}px)">
+        <text>{{item.title}}</text>
+      </view>
+      <view class="action" catchtap="confirmDelete" data-id="{{item.id}}">删除</view>
+    </view>
+  </block>
+
+  <!-- WXS 版本 -->
+  <block wx:else>
+    <view class="srow" wx:for="{{list}}" wx:key="id"
+          data-index="{{index}}"
+          bindtouchstart="{{swipe.touchstart}}"
+          bindtouchmove="{{swipe.touchmove}}"
+          bindtouchend="{{swipe.touchend}}">
+      <view class="cell"><text>{{item.title}}</text></view>
+      <view class="action" catchtap="confirmDelete" data-id="{{item.id}}">删除</view>
+    </view>
+  </block>
+</view>

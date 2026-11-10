@@ -1,0 +1,1 @@
+.log { font-family: Consolas, Menlo, monospace; font-size: 20rpx; color: #444; padding: 4rpx 0; border-bottom: 2rpx solid #f5f5f5; }

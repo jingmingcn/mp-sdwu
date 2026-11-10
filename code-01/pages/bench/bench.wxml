@@ -1,0 +1,31 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">setData 基准测试</view>
+    <view class="hint">每个用例跑 5 次取中位数。请在「开发者工具」与「真机预览」下各测一遍。</view>
+    <button class="btn" bindtap="runAll" loading="{{running}}">运行全部用例</button>
+    <button class="btn btn--ghost" bindtap="clear">清空结果</button>
+  </view>
+
+  <view class="card" wx:if="{{results.length}}">
+    <view class="tbl">
+      <view class="tbl__row tbl__row--head">
+        <text class="tbl__c">用例</text>
+        <text class="tbl__c">字节</text>
+        <text class="tbl__c">耗时ms</text>
+        <text class="tbl__c">×A</text>
+      </view>
+      <view class="tbl__row" wx:for="{{results}}" wx:key="name">
+        <text class="tbl__c">{{item.name}}</text>
+        <text class="tbl__c">{{item.size}}</text>
+        <text class="tbl__c">{{item.ms}}</text>
+        <text class="tbl__c">{{item.ratio}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 渲染区：真实渲染这些数据，否则测不出渲染成本 -->
+  <view class="card">
+    <view class="hint">当前渲染 {{list.length}} 条</view>
+    <view wx:for="{{list}}" wx:key="id" class="row">{{item.title}} · {{item.priceInCent}}</view>
+  </view>
+</view>

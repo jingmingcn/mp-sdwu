@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">独立分包落地页</view>
+    <view class="kv"><text class="kv__k">getApp()</text><text class="kv__v">{{appState}}</text></view>
+    <view class="hint">
+      TODO-10:
+      1. getApp({ allowDefault: true }) 的行为是什么？
+      2. 登录态怎么办？（自己调 wx.login，或延后到用户点击时）
+      3. request 封装要复制一份吗？体积多大？有没有更好的办法？
+    </view>
+  </view>
+</view>

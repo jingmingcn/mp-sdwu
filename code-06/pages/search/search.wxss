@@ -1,0 +1,2 @@
+.sin { border: 2rpx solid #ddd; border-radius: 8rpx; padding: 12rpx 20rpx; font-size: 28rpx; margin-bottom: 12rpx; }
+.opt { display: inline-block; margin-right: 24rpx; font-size: 24rpx; }

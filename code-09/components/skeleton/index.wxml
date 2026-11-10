@@ -1,0 +1,9 @@
+<view class="sk">
+  <view class="sk-item" wx:for="{{rows}}" wx:key="*this">
+    <view class="sk-img"></view>
+    <view class="sk-lines">
+      <view class="sk-line w80"></view>
+      <view class="sk-line w50"></view>
+    </view>
+  </view>
+</view>

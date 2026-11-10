@@ -1,0 +1,9 @@
+<view class="star-rating">
+  <view
+    wx:for="{{stars}}"
+    wx:key="index"
+    class="star {{item.ratio >= 1 ? 'is-on' : ''}}"
+    data-index="{{index}}"
+    bindtap="onTap"
+  ></view>
+</view>

@@ -1,0 +1,19 @@
+/* 组件内部通过 mask 绘制星形，形状由使用方或全局注入 */
+page {
+  --star-shape: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z'/%3E%3C/svg%3E");
+}
+
+/* ⑥ 换肤：只改 CSS 变量 */
+.theme-red {
+  --star-active-color: #c0392b;
+  --star-inactive-color: #f0d5d2;
+}
+
+/* ⑦ 外部样式类 */
+.big-star { transform: scale(1.15); }
+.gray-text { color: #999 !important; font-size: 22rpx !important; }
+
+/* ⑧ flex 布局验证 */
+.flexbox { display: flex; align-items: center; gap: 16rpx; }
+.flexbox__label { flex: none; font-size: 26rpx; }
+.flexbox__tail { flex: 1; text-align: right; font-size: 24rpx; color: #999; }

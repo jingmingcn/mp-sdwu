@@ -1,0 +1,4 @@
+.badge { display: inline-block; padding: 2rpx 12rpx; border-radius: 999rpx; font-size: 20rpx; margin-bottom: 8rpx; }
+.badge--pending { background: #fff3cd; color: #8a6d3b; }
+.badge--published { background: #e6f4ea; color: #2e7d32; }
+.badge--rejected { background: #fdecea; color: #c0392b; }

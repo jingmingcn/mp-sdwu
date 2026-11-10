@@ -1,0 +1,38 @@
+/**
+ * WXS 格式化模块 —— 运行在渲染层，零跨线程开销。
+ *
+ * 限制提醒（写之前先读一遍）：
+ *   只能用 var / function，不能用 const / let / 箭头函数 / 模板字符串
+ *   没有 Date，用 getDate()；没有 JSON；没有展开运算符
+ *   没有 padStart / includes / Array.from
+ */
+
+// TODO-1: 分为「元」并保留两位小数，空值返回 '--'
+//   提示：WXS 没有模板字符串，只能用 '+' 拼接
+function price(cent) {
+  return ''
+}
+
+// TODO-2: 超过 n 个字符时截断并加 '…'
+function ellipsis(s, n) {
+  return ''
+}
+
+// TODO-3: 时间戳 → 'MM-DD HH:mm'
+//   提示：用 getDate(ts) 取代 new Date(ts)
+//         没有 padStart，自己写：(v < 10 ? '0' : '') + v
+function time(ts) {
+  return ''
+}
+
+// TODO-4: 根据库存返回类名：0 → 'sold-out'，<10 → 'low'，其余 ''
+function stockClass(n) {
+  return ''
+}
+
+module.exports = {
+  price: price,
+  ellipsis: ellipsis,
+  time: time,
+  stockClass: stockClass
+}

@@ -1,0 +1,32 @@
+{
+  "name": "mp-sdwu-lab-12",
+  "version": "1.0.0",
+  "private": true,
+  "description": "实验十二 测试、CI 与发布运维",
+  "scripts": {
+    "lint": "eslint miniprogram scripts tests --ext .js && node scripts/lint-setdata.js",
+    "format": "prettier --write \"**/*.{js,json,wxss,wxml}\"",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:e2e": "jest --config jest.e2e.config.js",
+    "size": "node scripts/check-size.js",
+    "upload": "node scripts/upload.js",
+    "ci:local": "npm run lint && npm run test:cov && npm run size",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix", "prettier --write"],
+    "*.{json,wxss,wxml}": ["prettier --write"]
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "miniprogram-simulate": "^1.6.2",
+    "miniprogram-automator": "^0.12.1",
+    "miniprogram-ci": "^2.1.31"
+  }
+}

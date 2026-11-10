@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">实验十二 · 工程化演示</view>
+    <star-rating default-value="{{3}}" bind:change="onRate" />
+    <view class="kv"><text class="kv__k">评分</text><text class="kv__v">{{score}}</text></view>
+  </view>
+  <view class="card">
+    <button class="btn" bindtap="goCart">购物车</button>
+    <button class="btn btn--ghost" bindtap="throwError">故意抛一个错（验证上报）</button>
+    <button class="btn btn--ghost" bindtap="rejectPromise">未 catch 的 Promise</button>
+  </view>
+</view>

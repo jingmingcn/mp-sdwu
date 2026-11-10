@@ -1,0 +1,36 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">登录态</view>
+    <view class="kv"><text class="kv__k">access token</text><text class="kv__v">{{tokenBrief}}</text></view>
+    <view class="kv"><text class="kv__k">用户</text><text class="kv__v">{{user.nickname || '-'}}</text></view>
+    <view class="kv"><text class="kv__k">积分</text><text class="kv__v">{{user.points}}</text></view>
+    <button class="btn" bindtap="doLogin">静默登录</button>
+    <button class="btn btn--ghost" bindtap="doLogout">登出</button>
+    <button class="btn btn--ghost" bindtap="refresh">刷新状态</button>
+  </view>
+
+  <view class="card">
+    <view class="card__title">无感续期验证</view>
+    <button class="btn btn--ghost" bindtap="expire">① 让 token 失效</button>
+    <button class="btn" bindtap="burst6">② 并发 6 个 /profile</button>
+    <view class="hint">
+      服务器日志里 /auth/refresh 应只有 1 条，6 个请求全部成功，
+      界面上不能出现任何「请重新登录」的提示。
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">code 一次性验证</view>
+    <button class="btn btn--ghost" bindtap="reuseCode">用同一个 code 登录两次</button>
+    <view class="hint">记录服务端返回的错误码，说明 code 的什么特性。</view>
+  </view>
+
+  <view class="card">
+    <button class="btn" bindtap="go" data-url="/pages/profile/profile">需要登录的页面</button>
+    <button class="btn" bindtap="go" data-url="/pages/attack/attack">攻防演练面板</button>
+  </view>
+
+  <view class="card">
+    <view class="log" wx:for="{{logs}}" wx:key="index">{{item}}</view>
+  </view>
+</view>

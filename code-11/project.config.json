@@ -1,0 +1,13 @@
+{
+  "description": "微信小程序高级开发 实验11 · 云开发留言板",
+  "packOptions": { "ignore": [{ "type": "folder", "value": "node_modules" }], "include": [] },
+  "setting": {
+    "urlCheck": false, "es6": true, "enhance": true, "postcss": true, "minified": true,
+    "packNpmManually": false, "packNpmRelationList": [], "ignoreDevUnusedFiles": false
+  },
+  "cloudfunctionRoot": "cloudfunctions/",
+  "compileType": "miniprogram",
+  "libVersion": "3.0.0",
+  "appid": "请填写你自己的 AppID（云开发不支持测试号）",
+  "projectname": "mp-sdwu-lab-11"
+}

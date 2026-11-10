@@ -1,0 +1,28 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">发布留言</view>
+    <textarea class="ta" placeholder="说点什么…（1–500 字）" maxlength="500"
+              value="{{content}}" bindinput="onInput" />
+    <view class="counter">{{content.length}}/500</view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">图片（最多 9 张）</view>
+    <view class="imgs">
+      <view class="img" wx:for="{{images}}" wx:key="*this">
+        <image src="{{item}}" mode="aspectFill" />
+        <view class="del" data-index="{{index}}" bindtap="removeImage">×</view>
+      </view>
+      <view class="add" wx:if="{{images.length < 9}}" bindtap="chooseImages">+</view>
+    </view>
+    <progress wx:if="{{uploading}}" percent="{{percent}}" stroke-width="4" activeColor="#551645" />
+  </view>
+
+  <view class="card">
+    <button class="btn" bindtap="submit" loading="{{busy}}">发布</button>
+    <view class="hint">
+      内容会先入库为「审核中」，文本检测通过后再做图片异步检测，
+      全部通过才对其他人可见。
+    </view>
+  </view>
+</view>

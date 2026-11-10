@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">scene 长度实验</view>
+    <button class="btn btn--ghost" bindtap="genLong">直接用超长 scene（应失败）</button>
+    <button class="btn" bindtap="genShortKey">改用短 key（应成功）</button>
+    <image wx:if="{{image}}" class="qr" src="{{image}}" mode="aspectFit" />
+    <view class="log" wx:for="{{logs}}" wx:key="index">{{item}}</view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">解析 scene</view>
+    <input class="in" placeholder="粘贴短 key" bindinput="onKey" />
+    <button class="btn btn--ghost" bindtap="resolve">换回完整参数</button>
+  </view>
+</view>

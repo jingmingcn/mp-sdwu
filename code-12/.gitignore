@@ -1,0 +1,11 @@
+node_modules/
+miniprogram/miniprogram_npm/
+coverage/
+dist/
+.DS_Store
+*.log
+
+# ⚠ 上传密钥泄漏 = 交出发布权限。若不慎提交，立即在 MP 后台重置密钥。
+private.*.key
+private.key
+.env

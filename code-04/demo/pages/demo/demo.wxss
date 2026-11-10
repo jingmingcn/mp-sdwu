@@ -1,0 +1,2 @@
+.pane { padding: 32rpx 0; font-size: 26rpx; color: #444; }
+.in { border: 2rpx solid #ddd; border-radius: 8rpx; padding: 8rpx 16rpx; margin-top: 12rpx; font-size: 24rpx; }

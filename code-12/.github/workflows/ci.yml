@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      # jest 的 coverageThreshold 不达标时会返回非 0，CI 随之失败
+      - name: Test with coverage
+        run: npm run test:cov
+
+      - name: 体积红线
+        run: npm run size
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage
+          path: coverage/
+
+  upload:
+    needs: quality
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # TODO-21: 补全上传步骤
+      # ⚠ 密钥用完必须删除，且 if: always() 保证失败时也会删
+      - name: 写入上传密钥
+        run: echo "${{ secrets.WX_PRIVATE_KEY }}" > private.key
+
+      - name: 上传体验版
+        run: npm run upload
+        env:
+          WX_APPID: ${{ secrets.WX_APPID }}
+          WX_PRIVATE_KEY_PATH: ./private.key
+          CI_ROBOT: 1
+
+      - name: 清理密钥
+        if: always()
+        run: rm -f private.key

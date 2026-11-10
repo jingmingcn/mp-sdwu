@@ -1,0 +1,17 @@
+<view class="sd-tabs">
+  <scroll-view class="sd-tabs__bar" scroll-x enable-flex scroll-into-view="{{scrollInto}}">
+    <view wx:for="{{titles}}" wx:key="index"
+          id="tab-{{index}}"
+          class="sd-tabs__item tab-class {{index === activeIndex ? 'is-active' : ''}} {{item.disabled ? 'is-disabled' : ''}}"
+          data-index="{{index}}"
+          bindtap="onTitleTap">
+      <text>{{item.title}}</text>
+      <text wx:if="{{item.badge > 0}}" class="sd-tabs__badge">{{item.badge > 99 ? '99+' : item.badge}}</text>
+    </view>
+    <view class="sd-tabs__ink" style="width:{{inkWidth}}px;transform:translateX({{inkLeft}}px)"></view>
+  </scroll-view>
+
+  <view class="sd-tabs__body">
+    <slot></slot>
+  </view>
+</view>

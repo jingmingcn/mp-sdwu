@@ -1,0 +1,38 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">视频信息流</view>
+    <radio-group bindchange="onMode">
+      <label class="opt"><radio value="each" checked />方案 A · 每项一个 video</label>
+      <label class="opt"><radio value="single" />方案 B · 单例 video</label>
+    </radio-group>
+    <view class="hint">
+      在同一台真机上对比：内存峰值 / 滚动 FPS / 首屏时间。
+      50 个 video 组件会发生什么？
+    </view>
+  </view>
+
+  <!-- 方案 A：每项一个原生组件 -->
+  <block wx:if="{{mode === 'each'}}">
+    <view class="item" wx:for="{{list}}" wx:key="id">
+      <video class="v" src="{{item.url}}" controls></video>
+      <view class="t">{{item.title}}</view>
+    </view>
+  </block>
+
+  <!-- 方案 B：只有一个 video，跟随当前播放项移动 -->
+  <block wx:else>
+    <view class="item" wx:for="{{list}}" wx:key="id" id="item-{{index}}">
+      <view class="cover" data-index="{{index}}" bindtap="onPlay">
+        <image class="v" src="{{item.cover}}" mode="aspectFill" lazy-load />
+        <view class="play">▶</view>
+      </view>
+      <view class="t">{{item.title}}</view>
+    </view>
+    <video id="player" class="floating"
+           src="{{playingIndex >= 0 ? list[playingIndex].url : ''}}"
+           style="top:{{videoTop}}px"
+           hidden="{{playingIndex < 0}}"
+           controls
+           bindended="onEnded"></video>
+  </block>
+</view>

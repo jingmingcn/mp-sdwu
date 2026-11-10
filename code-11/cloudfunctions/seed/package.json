@@ -1,0 +1,7 @@
+{
+  "name": "seed",
+  "version": "1.0.0",
+  "description": "造测试数据（索引对比实验需要 5000 条）",
+  "main": "index.js",
+  "dependencies": { "wx-server-sdk": "~2.6.3" }
+}

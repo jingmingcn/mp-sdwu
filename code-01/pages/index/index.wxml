@@ -1,0 +1,26 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">任务导航</view>
+    <button class="btn" bindtap="go" data-url="/pages/lifecycle/lifecycle">任务二 · 生命周期观测</button>
+    <button class="btn" bindtap="go" data-url="/pages/bench/bench">任务三 · setData 基准测试</button>
+  </view>
+
+  <view class="card">
+    <view class="card__title">任务四 · 环境探测</view>
+    <button class="btn btn--ghost" bindtap="runProbes">执行探测</button>
+    <view wx:for="{{probes}}" wx:key="key" class="kv">
+      <text class="kv__k">{{item.key}}</text>
+      <text class="kv__v">{{item.value}}</text>
+    </view>
+    <view class="hint">同一段代码在开发者工具与真机上的输出可能不同。请分别记录并对比。</view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">真机调试</view>
+    <button class="btn btn--ghost" bindtap="enableDebug">打开真机 vConsole</button>
+    <view class="hint">
+      性能基准测试请用「预览」或「体验版」，不要用「真机调试」——
+      调试模式下逻辑层被代理，耗时会显著失真。
+    </view>
+  </view>
+</view>

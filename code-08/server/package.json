@@ -1,0 +1,8 @@
+{
+  "name": "mp-sdwu-lab-08-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "实验八 Mock 服务端：订阅消息 / 小程序码 / 场景短 key",
+  "main": "index.js",
+  "scripts": { "start": "node index.js" }
+}

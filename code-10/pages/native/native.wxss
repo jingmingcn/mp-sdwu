@@ -1,0 +1,20 @@
+.opt { display: inline-block; margin-right: 20rpx; font-size: 22rpx; }
+.wrap { position: relative; }
+.wrap.radius { border-radius: 40rpx; overflow: hidden; }
+.wrap.clip { overflow: hidden; height: 200rpx; }
+.wrap.rotate { transform: rotate(6deg); }
+.wrap.blur { filter: blur(4rpx); }
+.wrap.opacity { opacity: 0.5; }
+.native { width: 100%; height: 320rpx; }
+.overlay {
+  position: relative;
+  z-index: 9999;
+  margin-top: -120rpx;
+  background: rgba(85, 22, 69, 0.85);
+  color: #fff;
+  padding: 16rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
+.sv { height: 500rpx; }
+.filler { height: 200rpx; line-height: 200rpx; text-align: center; background: #f0e6ee; margin: 8rpx 0; }

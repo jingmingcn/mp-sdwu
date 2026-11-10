@@ -1,0 +1,22 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">竞态实验</view>
+    <input class="sin" placeholder="快速输入 a → ab → abc" bindinput="onInput" />
+    <view class="hint">
+      服务器按关键词长度**反向**延迟：越短返回越慢。
+      不做处理时，最终显示的会是 'a' 的结果。
+    </view>
+    <radio-group bindchange="onMode">
+      <label class="opt"><radio value="none" checked />不处理</label>
+      <label class="opt"><radio value="abort" />只 abort</label>
+      <label class="opt"><radio value="seq" />只序号法</label>
+      <label class="opt"><radio value="both" />两者都用</label>
+    </radio-group>
+    <view class="kv"><text class="kv__k">当前关键词</text><text class="kv__v">{{kw}}</text></view>
+    <view class="kv"><text class="kv__k">结果属于</text><text class="kv__v">{{resultKw}}</text></view>
+  </view>
+
+  <view class="card">
+    <view wx:for="{{list}}" wx:key="id" class="hint">{{item.title}}</view>
+  </view>
+</view>

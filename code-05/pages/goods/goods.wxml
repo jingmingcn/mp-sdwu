@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="card">
+    <view class="kv">
+      <text class="kv__k">购物车</text>
+      <text class="kv__v">{{count}} 件 · {{totalText}}</text>
+    </view>
+    <view class="hint">加购后切到「我的」页，不做任何刷新操作，件数应该已经同步。</view>
+  </view>
+
+  <view class="card" wx:for="{{goods}}" wx:key="id">
+    <view class="g">
+      <view class="g__info">
+        <view class="g__title">{{item.title}}</view>
+        <view class="g__price">￥{{item.priceText}}</view>
+        <view class="g__stock">库存 {{item.stock}}</view>
+      </view>
+      <button class="btn g__add" size="mini" data-index="{{index}}" bindtap="onAdd">加入购物车</button>
+    </view>
+  </view>
+</view>

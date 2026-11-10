@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">启动来源</view>
+    <view class="kv"><text class="kv__k">scene</text><text class="kv__v">{{entry.scene}}</text></view>
+    <view class="kv"><text class="kv__k">策略</text><text class="kv__v">{{entry.strategy}}</text></view>
+    <view class="kv"><text class="kv__k">单页模式</text><text class="kv__v">{{entry.isSinglePage}}</text></view>
+    <view class="kv"><text class="kv__k">query</text><text class="kv__v">{{queryText}}</text></view>
+    <view class="hint">在真机上分别用五种方式打开小程序，填写归因表。</view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">差异化首屏（TODO-19）</view>
+    <block wx:if="{{entry.strategy === 'scan'}}">
+      <view class="hint">扫码进入 —— 应直接跳到对应商品/门店</view>
+    </block>
+    <block wx:elif="{{entry.strategy === 'share'}}">
+      <view class="hint">好友分享 —— 应展示「XX 推荐给你」</view>
+    </block>
+    <block wx:elif="{{entry.strategy === 'group'}}">
+      <view class="hint">群分享 —— 应展示群拼团入口</view>
+    </block>
+    <block wx:else>
+      <view class="hint">默认首屏</view>
+    </block>
+  </view>
+
+  <view class="card">
+    <button class="btn" bindtap="go" data-url="/pages/goods/detail?id=1">商品详情（分享）</button>
+    <button class="btn" bindtap="go" data-url="/pages/order/success?id=202610150001">下单成功（订阅消息）</button>
+    <button class="btn" bindtap="go" data-url="/pages/qrcode/qrcode">小程序码</button>
+    <button class="btn" bindtap="go" data-url="/pages/capability/capability">能力降级</button>
+  </view>
+</view>

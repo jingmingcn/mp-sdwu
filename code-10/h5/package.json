@@ -1,0 +1,7 @@
+{
+  "name": "mp-sdwu-lab-10-h5",
+  "version": "1.0.0",
+  "private": true,
+  "description": "实验十 配套 H5 页面（零依赖静态服务器）",
+  "scripts": { "start": "node server.js" }
+}

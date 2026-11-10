@@ -1,0 +1,6 @@
+{
+  "name": "mp-sdwu-lab-06",
+  "version": "1.0.0",
+  "private": true,
+  "description": "实验六 带拦截器的请求库"
+}

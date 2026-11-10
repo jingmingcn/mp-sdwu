@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "skeleton": "/components/skeleton/index",
+    "virtual-list": "/components/virtual-list/index",
+    "dashboard": "/packageChart/components/dashboard/index"
+  },
+  "componentPlaceholder": { "dashboard": "view" },
+  "navigationBarTitleText": "首页"
+}

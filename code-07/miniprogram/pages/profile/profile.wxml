@@ -1,0 +1,15 @@
+<view class="page">
+  <block wx:if="{{_authReady}}">
+    <view class="card">
+      <view class="card__title">我的资料</view>
+      <view class="kv"><text class="kv__k">昵称</text><text class="kv__v">{{profile.nickname}}</text></view>
+      <view class="kv"><text class="kv__k">积分</text><text class="kv__v">{{profile.points}}</text></view>
+      <view class="kv"><text class="kv__k">管理员</text><text class="kv__v">{{profile.isAdmin}}</text></view>
+    </view>
+    <view class="card">
+      <view class="card__title">我的订单</view>
+      <view class="hint" wx:for="{{orders}}" wx:key="id">{{item.title}} · ￥{{item.amountInCent}}</view>
+    </view>
+  </block>
+  <view class="card" wx:else><view class="hint">正在校验登录态…</view></view>
+</view>

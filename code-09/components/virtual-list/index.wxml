@@ -1,0 +1,19 @@
+<scroll-view class="vl" scroll-y style="height:{{height}}px" bindscroll="onScroll"
+             scroll-top="{{scrollTop}}" enable-back-to-top>
+  <!-- 上方占位：撑出总高度，保证滚动条长度与位置正确 -->
+  <view style="height:{{padTop}}px"></view>
+
+  <view wx:for="{{visible}}" wx:key="_i" class="vl__row" style="height:{{itemHeight}}rpx">
+    <slot name="item"></slot>
+    <view class="vl__default">
+      <image class="vl__img" src="{{item.cover}}" mode="aspectFill" lazy-load />
+      <view class="vl__body">
+        <view class="vl__title">{{item.title}}</view>
+        <view class="vl__price">{{item.priceText}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 下方占位 -->
+  <view style="height:{{padBottom}}px"></view>
+</scroll-view>

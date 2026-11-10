@@ -1,0 +1,44 @@
+<view class="page">
+
+  <view class="card">
+    <view class="card__title">① 静态 tab</view>
+    <sd-tabs id="tabs" current="{{current}}" bind:change="onTabChange">
+      <sd-tab title="全部" badge="{{12}}">
+        <view class="pane">全部内容 · 这里放一个有状态的输入框：<input class="in" placeholder="输入点什么" /></view>
+      </sd-tab>
+      <sd-tab title="待付款">
+        <view class="pane">待付款内容</view>
+      </sd-tab>
+      <sd-tab title="已完成" disabled>
+        <view class="pane">已完成（禁用，不该能切进来）</view>
+      </sd-tab>
+    </sd-tabs>
+    <view class="kv"><text class="kv__k">change 事件</text><text class="kv__v">{{lastChange}}</text></view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">② 命令式 API</view>
+    <button class="btn btn--ghost" bindtap="callNext">next()</button>
+    <button class="btn btn--ghost" bindtap="callPrev">prev()</button>
+    <button class="btn btn--ghost" bindtap="callSwitchTo2">switchTo(2) —— 应该被拒绝</button>
+    <button class="btn" bindtap="verifyExport">验证封装边界（看控制台）</button>
+    <view class="kv"><text class="kv__k">getCurrent()</text><text class="kv__v">{{exported}}</text></view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">③ 动态 tab（验证 relations 回调）</view>
+    <button class="btn btn--ghost" bindtap="addTab">增加一项</button>
+    <button class="btn btn--ghost" bindtap="removeTab">删除最后一项</button>
+    <sd-tabs bind:change="onDynChange">
+      <sd-tab wx:for="{{dynTabs}}" wx:key="id" title="{{item.title}}">
+        <view class="pane">{{item.title}} 的内容</view>
+      </sd-tab>
+    </sd-tabs>
+  </view>
+
+  <view class="card">
+    <view class="card__title">④ 包内其他组件</view>
+    <star-rating default-value="{{4}}" texts="{{texts}}" />
+  </view>
+
+</view>

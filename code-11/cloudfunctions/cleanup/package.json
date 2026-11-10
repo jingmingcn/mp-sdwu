@@ -1,0 +1,7 @@
+{
+  "name": "cleanup",
+  "version": "1.0.0",
+  "description": "定时清理任务",
+  "main": "index.js",
+  "dependencies": { "wx-server-sdk": "~2.6.3" }
+}

@@ -1,0 +1,42 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">同层渲染验证（TODO-10）</view>
+    <view class="hint">
+      逐项测试并填表（**必须真机，iOS + Android 各一份**）：
+      普通 view 能否盖住 / border-radius / overflow:hidden /
+      transform:rotate / filter:blur / opacity / scroll-view 内拖影
+    </view>
+    <checkbox-group bindchange="onEffects">
+      <label class="opt"><checkbox value="radius" />圆角</label>
+      <label class="opt"><checkbox value="clip" />父级裁剪</label>
+      <label class="opt"><checkbox value="rotate" />旋转</label>
+      <label class="opt"><checkbox value="blur" />滤镜</label>
+      <label class="opt"><checkbox value="opacity" />半透明</label>
+    </checkbox-group>
+  </view>
+
+  <view class="card">
+    <view class="card__title">video</view>
+    <view class="wrap {{effects}}">
+      <video class="native" src="{{videoSrc}}" controls></video>
+    </view>
+    <view class="overlay">z-index: 9999 的浮层 —— 能盖住吗？</view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">map</view>
+    <view class="wrap {{effects}}">
+      <map class="native" latitude="36.67" longitude="117.06" scale="14"></map>
+    </view>
+    <view class="overlay">浮层</view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">scroll-view 内滚动（观察拖影）</view>
+    <scroll-view scroll-y class="sv">
+      <view class="filler" wx:for="{{[1,2,3]}}" wx:key="*this">占位 {{item}}</view>
+      <video class="native" src="{{videoSrc}}" controls></video>
+      <view class="filler" wx:for="{{[4,5,6]}}" wx:key="*this">占位 {{item}}</view>
+    </scroll-view>
+  </view>
+</view>

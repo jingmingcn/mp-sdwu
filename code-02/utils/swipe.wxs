@@ -1,0 +1,48 @@
+/**
+ * 左滑删除 —— WXS 响应事件版本。
+ *
+ * 关键：touchmove 里直接 setStyle，完全不经过逻辑层，
+ *       所以即使逻辑层繁忙，滑动依然跟手。
+ */
+var MAX_RPX = -160
+
+function pxOf(rpx, ins) {
+  var st = ins.getState()
+  if (!st.screenW) {
+    // WXS 里拿不到 wx.getWindowInfo，屏宽由逻辑层通过 data 传进来
+    st.screenW = 375
+  }
+  return rpx * st.screenW / 750
+}
+
+function touchstart(e, ins) {
+  var st = ins.getState()
+  st.startX = e.touches[0].pageX
+  st.origin = st.x || 0
+  var cell = ins.selectComponent('.cell')
+  if (cell) cell.setStyle({ transition: 'none' })
+  return false
+}
+
+function touchmove(e, ins) {
+  var st = ins.getState()
+  // TODO-11: 计算 dx，把 st.x 限制在 [pxOf(MAX_RPX), 0]，然后 setStyle
+  //   var dx = e.touches[0].pageX - st.startX
+  //   st.x = Math.max(..., Math.min(0, st.origin + dx))
+  //   ins.selectComponent('.cell').setStyle({ transform: 'translateX(' + st.x + 'px)' })
+  return false
+}
+
+function touchend(e, ins) {
+  var st = ins.getState()
+  // TODO-12: 位移超过一半吸附到 MAX，否则回到 0
+  //   记得加 transition 让吸附有动画
+  // TODO-13: ins.callMethod('onSwipeEnd', { index: ..., open: ... }) 通知逻辑层
+  return false
+}
+
+module.exports = {
+  touchstart: touchstart,
+  touchmove: touchmove,
+  touchend: touchend
+}

@@ -1,0 +1,4 @@
+{
+  "usingComponents": { "star-rating": "sdwu-ui/star-rating/index" },
+  "navigationBarTitleText": "sdwu-ui 演示"
+}

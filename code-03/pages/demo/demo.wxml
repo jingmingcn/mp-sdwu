@@ -1,0 +1,53 @@
+<view class="page">
+
+  <view class="card">
+    <view class="card__title">① 非受控（组件自己管）</view>
+    <star-rating default-value="{{3}}" bind:change="onUncontrolled" />
+    <view class="kv"><text class="kv__k">父级收到的值</text><text class="kv__v">{{uncontrolledValue}}</text></view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">② 受控（父级说了算）</view>
+    <star-rating value="{{controlled}}" bind:change="onControlled" />
+    <view class="kv"><text class="kv__k">当前值</text><text class="kv__v">{{controlled}}</text></view>
+    <button class="btn btn--ghost" bindtap="reset">父级强制重置为 0</button>
+  </view>
+
+  <view class="card">
+    <view class="card__title">③ 受控 + 父级拒绝更新</view>
+    <star-rating value="{{2}}" bind:change="onRejected" />
+    <view class="hint">这个永远是 2，点击必须纹丝不动。如果动了，说明受控实现是假的。</view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">④ 半星 + 描述文字</view>
+    <star-rating default-value="{{3.5}}" allow-half texts="{{texts}}" bind:change="onHalf" />
+  </view>
+
+  <view class="card">
+    <view class="card__title">⑤ 只读 / 10 星</view>
+    <star-rating value="{{4}}" readonly size="{{32}}" />
+    <star-rating default-value="{{7}}" max="{{10}}" size="{{32}}" />
+  </view>
+
+  <view class="card theme-red">
+    <view class="card__title">⑥ CSS 变量换肤（组件代码一行未改）</view>
+    <star-rating default-value="{{4}}" />
+  </view>
+
+  <view class="card">
+    <view class="card__title">⑦ externalClasses</view>
+    <star-rating default-value="{{3}}" star-class="big-star" text-class="gray-text" texts="{{texts}}" />
+  </view>
+
+  <view class="card">
+    <view class="card__title">⑧ virtualHost 验证（放进 flex 容器）</view>
+    <view class="flexbox">
+      <text class="flexbox__label">评分</text>
+      <star-rating default-value="{{4}}" size="{{32}}" />
+      <text class="flexbox__tail">右侧内容</text>
+    </view>
+    <view class="hint">若组件破坏了这一行的布局，说明 virtualHost 没生效。</view>
+  </view>
+
+</view>

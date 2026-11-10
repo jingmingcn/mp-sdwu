@@ -1,0 +1,40 @@
+<wxs src="../../utils/fmt.wxs" module="fmt" />
+
+<view class="page">
+  <view class="card">
+    <view class="card__title">三种方案对照</view>
+    <button class="btn" bindtap="runA">方案 A · 逻辑层预处理</button>
+    <button class="btn" bindtap="runB">方案 B · WXS</button>
+    <button class="btn btn--ghost" bindtap="runC">方案 C · 错误示范（观察报错）</button>
+    <view class="kv"><text class="kv__k">当前方案</text><text class="kv__v">{{mode}}</text></view>
+    <view class="kv"><text class="kv__k">setData 字节</text><text class="kv__v">{{size}}</text></view>
+    <view class="kv"><text class="kv__k">往返耗时</text><text class="kv__v">{{ms}}ms</text></view>
+  </view>
+
+  <!-- 方案 A：所有派生字段由逻辑层算好传过来 -->
+  <view class="card" wx:if="{{mode === 'A'}}">
+    <view wx:for="{{list}}" wx:key="id" class="row {{item.stockClass}}">
+      <text class="row__t">{{item.titleShort}}</text>
+      <text class="row__p">{{item.priceText}}</text>
+      <text class="row__d">{{item.timeText}}</text>
+    </view>
+  </view>
+
+  <!-- 方案 B：只传原始字段，模板里调 WXS -->
+  <view class="card" wx:if="{{mode === 'B'}}">
+    <view wx:for="{{list}}" wx:key="id" class="row {{fmt.stockClass(item.stock)}}">
+      <text class="row__t">{{ fmt.ellipsis(item.title, 12) }}</text>
+      <text class="row__p">{{ fmt.price(item.priceInCent) }}</text>
+      <text class="row__d">{{ fmt.time(item.createdAt) }}</text>
+    </view>
+  </view>
+
+  <!-- 方案 C：错误示范。取消注释后编译会失败，请记录错误原文 -->
+  <view class="card" wx:if="{{mode === 'C'}}">
+    <view class="hint">
+      把下面这行的注释去掉，观察编译错误：{{'\n'}}
+      &lt;text&gt;\{\{ formatPrice(item.priceInCent) \}\}&lt;/text&gt;
+    </view>
+    <!-- <view wx:for="{{list}}" wx:key="id">{{ formatPrice(item.priceInCent) }}</view> -->
+  </view>
+</view>

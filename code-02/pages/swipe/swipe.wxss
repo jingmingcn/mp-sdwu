@@ -1,0 +1,30 @@
+.opt { display: inline-block; margin-right: 32rpx; font-size: 26rpx; }
+.srow {
+  position: relative;
+  overflow: hidden;
+  height: 100rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+.cell {
+  position: relative;
+  z-index: 2;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 24rpx;
+  background: #fff;
+  font-size: 26rpx;
+}
+.action {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  width: 160rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: #c0392b;
+  color: #fff;
+  font-size: 26rpx;
+}

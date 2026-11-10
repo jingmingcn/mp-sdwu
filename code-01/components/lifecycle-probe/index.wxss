@@ -1,0 +1,7 @@
+.probe {
+  padding: 16rpx;
+  border: 2rpx dashed #551645;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  color: #551645;
+}

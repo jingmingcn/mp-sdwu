@@ -1,0 +1,5 @@
+<view class="stepper">
+  <view class="stepper__btn {{value <= min ? 'is-off' : ''}}" catchtap="dec">−</view>
+  <input class="stepper__in" type="number" value="{{value}}" bindblur="onInput" />
+  <view class="stepper__btn {{value >= max ? 'is-off' : ''}}" catchtap="inc">+</view>
+</view>

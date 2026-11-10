@@ -1,0 +1,59 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">能力降级演练</view>
+    <view class="hint">
+      每个能力都要验证三种状态：正常 / 用户拒绝 / 接口不可用。
+      三种状态下都不能出现白屏、卡死或没有任何提示，
+      且降级后的功能**必须真的可用**。
+    </view>
+    <switch checked="{{forceFail}}" bindchange="onForce" /><text class="sw">强制失败（演示降级）</text>
+  </view>
+
+  <view class="card">
+    <view class="card__title">① 获取手机号</view>
+    <button wx:if="{{!forceFail}}" class="btn" open-type="getPhoneNumber" bind:getphonenumber="onPhone">
+      一键获取手机号
+    </button>
+    <button wx:else class="btn" bindtap="phoneFallback">（强制失败，走降级）</button>
+    <view class="kv"><text class="kv__k">结果</text><text class="kv__v">{{phone}}</text></view>
+    <view wx:if="{{manualPhone}}" class="fallback">
+      <input class="in" placeholder="请输入手机号" bindinput="onManualPhone" />
+      <button class="btn btn--ghost" size="mini" bindtap="sendCode">发送验证码</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">② 订阅消息</view>
+    <button class="btn" bindtap="trySubscribe">请求订阅</button>
+    <view class="kv"><text class="kv__k">结果</text><text class="kv__v">{{subResult}}</text></view>
+    <view wx:if="{{useInbox}}" class="fallback">
+      <view class="hint">降级：站内消息中心（带小红点）</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">③ 小程序码</view>
+    <button class="btn" bindtap="tryQrcode">生成小程序码</button>
+    <view wx:if="{{shareLink}}" class="fallback">
+      <view class="hint">降级：可复制的分享链接</view>
+      <view class="link">{{shareLink}}</view>
+      <button class="btn btn--ghost" size="mini" bindtap="copyLink">复制</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">④ 定位</view>
+    <button class="btn" bindtap="tryLocation">获取位置</button>
+    <view class="kv"><text class="kv__k">结果</text><text class="kv__v">{{location}}</text></view>
+    <view wx:if="{{manualCity}}" class="fallback">
+      <picker mode="selector" range="{{cities}}" bindchange="onCity">
+        <view class="hint">降级：手动选择城市 —— 当前 {{city}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">降级记录</view>
+    <view class="log" wx:for="{{logs}}" wx:key="index">{{item}}</view>
+  </view>
+</view>

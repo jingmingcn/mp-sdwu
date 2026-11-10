@@ -1,0 +1,8 @@
+<!--
+  TODO-5 的模板配合：
+  首次激活前不渲染（省开销），激活过之后改用 hidden 保留内部状态。
+  用 wx:if 反复销毁重建，插槽里的组件状态会丢失（第三章 slot + wx:if 的坑）。
+-->
+<view wx:if="{{everActive}}" hidden="{{!active}}" class="sd-tab">
+  <slot></slot>
+</view>

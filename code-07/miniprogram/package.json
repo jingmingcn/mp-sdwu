@@ -1,0 +1,7 @@
+{
+  "name": "mp-sdwu-lab-07",
+  "version": "1.0.0",
+  "private": true,
+  "description": "实验七 登录鉴权全链路",
+  "dependencies": { "crypto-js": "^4.2.0" }
+}

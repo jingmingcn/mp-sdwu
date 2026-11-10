@@ -1,0 +1,17 @@
+{
+  "name": "mp-sdwu-lab-05",
+  "version": "1.0.0",
+  "private": true,
+  "description": "实验五 MobX 购物车",
+  "scripts": {
+    "test": "jest",
+    "test:cov": "jest --coverage"
+  },
+  "dependencies": {
+    "mobx-miniprogram": "^6.12.3",
+    "mobx-miniprogram-bindings": "^6.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "mp-sdwu-lab-06-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "实验六 Mock 服务器 —— 按需制造慢响应、超时、5xx、401、业务错误",
+  "main": "index.js",
+  "scripts": { "start": "node index.js" }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "mp-sdwu-lab-09",
+  "version": "1.0.0",
+  "private": true,
+  "description": "实验九 性能优化实战（初始工程故意写得很差）",
+  "dependencies": {
+    "dayjs": "^1.11.22"
+  }
+}

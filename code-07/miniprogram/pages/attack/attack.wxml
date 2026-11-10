@@ -1,0 +1,48 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">⚠ 攻防演练面板</view>
+    <view class="hint">
+      每种攻击都要留两份截图：**攻击成功**与**防护成功**。
+      步骤：先让服务端有漏洞 → 攻击成功截图 → 修复 → 攻击失败截图。
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">① 越权访问</view>
+    <input class="in" placeholder="想窥探的 uid，例如 1001" bindinput="onUid" />
+    <button class="btn" bindtap="attackOverreach">拉取别人的订单</button>
+    <view class="hint">
+      先把服务端 /orders 故意改成用 req.query.uid，
+      攻击成功后改回 req.uid，再攻一次。
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">② 篡改本地状态</view>
+    <button class="btn" bindtap="attackLocalState">把本地 user.isAdmin 改成 true</button>
+    <button class="btn btn--ghost" bindtap="callAdmin">调用 /admin/reset</button>
+    <view class="hint">前端按钮会出现，但服务端应该拒绝。</view>
+    <view class="kv"><text class="kv__k">本地 isAdmin</text><text class="kv__v">{{localAdmin}}</text></view>
+    <button wx:if="{{localAdmin}}" class="btn" bindtap="callAdmin">管理员入口（前端可见 ≠ 有权限）</button>
+  </view>
+
+  <view class="card">
+    <view class="card__title">③ 伪造 token</view>
+    <button class="btn" bindtap="decodeToken">解码当前 JWT（看看 payload 是不是明文）</button>
+    <button class="btn" bindtap="attackForgeToken">改 payload 的 uid，签名不动</button>
+    <view class="hint">
+      必答：JWT 的 payload 是加密还是仅编码？这对「payload 里能放什么」有什么约束？
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">④ 重放</view>
+    <button class="btn" bindtap="attackReplay">连续调 20 次 /checkin</button>
+    <view class="kv"><text class="kv__k">当前积分</text><text class="kv__v">{{points}}</text></view>
+    <view class="hint">不加防护时积分会涨 200。加幂等/限流/签名后应只涨 10。</view>
+  </view>
+
+  <view class="card">
+    <view class="log" wx:for="{{logs}}" wx:key="index">{{item}}</view>
+  </view>
+</view>

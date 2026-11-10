@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/profile/profile",
+    "pages/login/login",
+    "pages/attack/attack"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#551645",
+    "navigationBarTitleText": "实验七 · 登录鉴权",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f7"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

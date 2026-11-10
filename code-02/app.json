@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/format/format",
+    "pages/key/key",
+    "pages/swipe/swipe"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#551645",
+    "navigationBarTitleText": "实验二 · 渲染性能",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f7"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

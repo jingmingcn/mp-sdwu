@@ -1,0 +1,4 @@
+{
+  "usingComponents": { "star-rating": "/components/star-rating/index" },
+  "navigationBarTitleText": "star-rating 演示"
+}

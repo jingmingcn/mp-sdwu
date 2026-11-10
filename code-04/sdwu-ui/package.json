@@ -1,0 +1,14 @@
+{
+  "name": "sdwu-ui",
+  "version": "1.0.0",
+  "description": "山大移动端课程 UI 组件库",
+  "miniprogram": "miniprogram_dist",
+  "main": "miniprogram_dist/index.js",
+  "files": ["miniprogram_dist", "README.md", "CHANGELOG.md"],
+  "keywords": ["miniprogram", "weapp", "components"],
+  "scripts": {
+    "build": "node tools/build.js",
+    "prepublishOnly": "npm run build"
+  },
+  "license": "MIT"
+}

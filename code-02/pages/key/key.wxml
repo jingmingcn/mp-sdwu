@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">操作</view>
+    <view class="hint">
+      先在「有 key」的第 1 行输入 AAA、勾选第 2 行、把第 3 行计数点到 5，
+      再依次点击下面三个按钮，对比两个列表的状态跑到哪去了。
+    </view>
+    <button class="btn" bindtap="prepend">① 在头部插入一条</button>
+    <button class="btn" bindtap="reverse">② 逆序</button>
+    <button class="btn" bindtap="removeSecond">③ 删除第 2 条</button>
+    <button class="btn btn--ghost" bindtap="reset">重置</button>
+    <view class="kv"><text class="kv__k">上次 setData 耗时</text><text class="kv__v">{{ms}}ms</text></view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">有 wx:key="id"</view>
+    <view wx:for="{{list}}" wx:key="id" class="krow">
+      <input class="kin" value="{{item.name}}" placeholder="输入" />
+      <checkbox checked="{{item.checked}}" />
+      <my-counter />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card__title">无 wx:key</view>
+    <view wx:for="{{list}}" class="krow">
+      <input class="kin" value="{{item.name}}" placeholder="输入" />
+      <checkbox checked="{{item.checked}}" />
+      <my-counter />
+    </view>
+  </view>
+</view>

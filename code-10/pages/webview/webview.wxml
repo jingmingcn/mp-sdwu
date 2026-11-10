@@ -1,0 +1,7 @@
+<!--
+  ⚠ 一个页面只能有一个 web-view，且会铺满全屏。
+  任何 WXML 都盖不住它（不支持同层渲染）。
+
+  TODO-20: 逐项验证限制，把结果填进表里。
+-->
+<web-view src="{{url}}" bindmessage="onMessage" bindload="onLoad" binderror="onError"></web-view>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>实验十 · H5 互通</title>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  <style>
+    body { font-family: -apple-system, sans-serif; margin: 0; padding: 16px; background: #f5f5f7; color: #211112; }
+    .card { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+    h3 { margin: 0 0 8px; color: #551645; font-size: 16px; }
+    button { display: block; width: 100%; padding: 12px; margin: 8px 0; border: 0;
+             border-radius: 999px; background: #551645; color: #fff; font-size: 15px; }
+    button.ghost { background: #fff; color: #551645; border: 1px solid #551645; }
+    .log { font: 12px/1.6 Menlo, monospace; color: #444; word-break: break-all; }
+    .hint { font-size: 13px; color: #8c8c8c; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h3>环境检测</h3>
+    <div class="hint" id="env">检测中…</div>
+  </div>
+
+  <div class="card">
+    <h3>H5 → 小程序（postMessage）</h3>
+    <button onclick="notify()">发送一条消息</button>
+    <p class="hint">
+      ⚠ postMessage 不是实时的。只在小程序<b>后退、组件销毁、分享、复制链接</b>时，
+      才把累积的所有消息一次性传过去。
+    </p>
+    <div class="log" id="sent"></div>
+  </div>
+
+  <div class="card">
+    <h3>H5 → 小程序（导航）</h3>
+    <button class="ghost" onclick="goDetail()">navigateTo 商品详情</button>
+    <button class="ghost" onclick="back()">navigateBack</button>
+    <p class="hint">wx.miniProgram 只有 5 个导航方法 + postMessage + getEnv，
+      不能调用 wx.request / wx.login 等小程序 API。</p>
+  </div>
+
+  <div class="card">
+    <h3>登录态</h3>
+    <div class="log" id="auth"></div>
+    <p class="hint">
+      方案 A：URL 直传 token（token 会进入服务器访问日志、浏览器历史、Referer 头）<br>
+      方案 B：一次性 ticket，30 秒有效，用后即焚
+    </p>
+  </div>
+
+  <script>
+    var sent = 0
+
+    wx.miniProgram.getEnv(function (res) {
+      document.getElementById('env').textContent =
+        res.miniprogram ? '✓ 运行在小程序 web-view 里' : '✗ 普通浏览器环境'
+    })
+
+    // TODO-14 / TODO-15 / TODO-16 对应的实现
+    function notify() {
+      sent++
+      wx.miniProgram.postMessage({
+        data: { type: 'h5Event', seq: sent, ts: Date.now() }
+      })
+      document.getElementById('sent').textContent =
+        '已发送 ' + sent + ' 条（小程序此刻还收不到）'
+    }
+
+    function goDetail() {
+      wx.miniProgram.navigateTo({ url: '/pages/poster/poster' })
+    }
+
+    function back() {
+      notify()   // 离开前先把消息塞进去 —— 这是「导航触发」的通信技巧
+      wx.miniProgram.navigateBack()
+    }
+
+    var params = new URLSearchParams(location.search)
+    document.getElementById('auth').textContent =
+      'token=' + (params.get('token') || '(无)') +
+      '  ticket=' + (params.get('ticket') || '(无)')
+  </script>
+</body>
+</html>

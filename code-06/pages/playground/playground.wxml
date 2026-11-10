@@ -1,0 +1,47 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">① 拦截器与错误分层</view>
+    <button class="btn btn--ghost" bindtap="run" data-case="normal">正常请求 /goods</button>
+    <button class="btn btn--ghost" bindtap="run" data-case="concurrent">并发 5 个（loading 应只弹一次）</button>
+    <button class="btn btn--ghost" bindtap="run" data-case="timeout">超时 /slow?ms=15000</button>
+    <button class="btn btn--ghost" bindtap="run" data-case="http404">404 /not-exist</button>
+    <button class="btn btn--ghost" bindtap="run" data-case="http500">500 /flaky?rate=1</button>
+    <button class="btn btn--ghost" bindtap="run" data-case="biz">业务错误 /biz-error</button>
+    <button class="btn btn--ghost" bindtap="run" data-case="abort">发出后立即 abort</button>
+  </view>
+
+  <view class="card">
+    <view class="card__title">② 重试与 401</view>
+    <button class="btn btn--ghost" bindtap="run" data-case="retry">重试 /flaky?rate=0.7</button>
+    <button class="btn btn--ghost" bindtap="run" data-case="login">先登录</button>
+    <button class="btn btn--ghost" bindtap="run" data-case="expire">让 token 失效</button>
+    <button class="btn" bindtap="run" data-case="refresh6">★ 并发 6 个 /secure（服务器日志应只有 1 次登录）</button>
+  </view>
+
+  <view class="card">
+    <view class="card__title">③ 并发与去重</view>
+    <picker mode="selector" range="{{limits}}" value="{{limitIndex}}" bindchange="onLimit">
+      <view class="kv"><text class="kv__k">并发上限</text><text class="kv__v">{{limits[limitIndex]}}</text></view>
+    </picker>
+    <button class="btn btn--ghost" bindtap="run" data-case="parallel20">20 个 /slow?ms=1000</button>
+    <button class="btn btn--ghost" bindtap="run" data-case="dedupe">3 个完全相同的 GET</button>
+  </view>
+
+  <view class="card">
+    <view class="card__title">④ 缓存策略</view>
+    <button class="btn btn--ghost" bindtap="run" data-case="cacheFirst">Cache First</button>
+    <button class="btn btn--ghost" bindtap="run" data-case="networkFirst">Network First</button>
+    <button class="btn btn--ghost" bindtap="run" data-case="swr">SWR</button>
+    <button class="btn btn--ghost" bindtap="clearCache">清空缓存</button>
+  </view>
+
+  <view class="card">
+    <view class="card__title">⑤ 竞态</view>
+    <button class="btn" bindtap="goSearch">进入搜索页</button>
+  </view>
+
+  <view class="card">
+    <view class="card__title">日志</view>
+    <view class="log" wx:for="{{logs}}" wx:key="index">{{item}}</view>
+  </view>
+</view>

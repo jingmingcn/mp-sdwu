@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="card" wx:if="{{!viewList.length}}">
+    <view class="hint">购物车是空的，去「商品」页加点东西吧。</view>
+  </view>
+
+  <view class="card" wx:for="{{viewList}}" wx:key="id">
+    <view class="c">
+      <checkbox class="c__ck" checked="{{item.checked}}" data-id="{{item.id}}" bindtap="onToggle" />
+      <view class="c__info">
+        <view class="c__title">{{item.title}}</view>
+        <view class="c__price">{{item.priceText}} × {{item.qty}} = {{item.subtotalText}}</view>
+      </view>
+      <stepper value="{{item.qty}}" max="{{99}}" data-id="{{item.id}}" bind:change="onStep" />
+      <view class="c__del" data-id="{{item.id}}" bindtap="onRemove">删</view>
+    </view>
+  </view>
+
+  <view class="bar" wx:if="{{viewList.length}}">
+    <checkbox checked="{{allChecked}}" bindtap="onToggleAll" /><text class="bar__all">全选</text>
+    <text class="bar__total">合计 {{totalText}}</text>
+    <button class="btn bar__go" size="mini" bindtap="onCheckout">结算({{count}})</button>
+  </view>
+</view>

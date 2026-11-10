@@ -1,0 +1,27 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">海报生成</view>
+    <switch checked="{{noDpr}}" bindchange="onDpr" /><text class="sw">关闭 DPR 缩放（对照实验）</text>
+    <button class="btn" bindtap="gen" loading="{{busy}}">生成海报（页面内 canvas）</button>
+    <button class="btn btn--ghost" bindtap="genOffscreen">生成海报（离屏 canvas）</button>
+    <button class="btn btn--ghost" bindtap="save">保存到相册</button>
+    <view class="kv"><text class="kv__k">生成耗时</text><text class="kv__v">{{ms}}ms</text></view>
+  </view>
+
+  <view class="card" wx:if="{{preview}}">
+    <!-- 降级：授权被拒时，用户可长按保存 -->
+    <image class="preview" src="{{preview}}" mode="widthFix" show-menu-by-longpress />
+    <view class="hint">授权被拒时，引导用户长按图片保存。</view>
+  </view>
+
+  <!--
+    ⚠ canvas 不能用 display:none 隐藏 —— 那样画不出来。
+    正确做法：绝对定位移到屏幕外。
+  -->
+  <canvas type="2d" id="poster" class="poster-canvas"></canvas>
+
+  <view class="card">
+    <view class="card__title">文字处理测试</view>
+    <view class="hint" wx:for="{{cases}}" wx:key="index">{{item}}</view>
+  </view>
+</view>

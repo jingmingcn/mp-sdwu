@@ -1,0 +1,7 @@
+{
+  "name": "message",
+  "version": "1.0.0",
+  "description": "留言板主云函数（一模块一函数 + 内部 action 路由）",
+  "main": "index.js",
+  "dependencies": { "wx-server-sdk": "~2.6.3" }
+}

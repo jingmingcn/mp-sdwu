@@ -1,0 +1,4 @@
+{
+  "usingComponents": { "probe": "/components/lifecycle-probe/index" },
+  "navigationBarTitleText": "任务二 · 生命周期"
+}

@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#551645",
+    "navigationBarTitleText": "实验九 · 性能优化",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f7"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

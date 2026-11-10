@@ -1,0 +1,44 @@
+/* 星形使用 mask，配合 background-color + CSS 变量实现换肤 */
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap, 8rpx);
+}
+
+.star {
+  position: relative;
+  overflow: hidden;
+  flex: none;
+}
+
+.star-bg,
+.star-fg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-mask: var(--star-shape) no-repeat center / contain;
+  mask: var(--star-shape) no-repeat center / contain;
+}
+
+.star-bg {
+  right: 0;
+  /* TODO-8: 用 --star-inactive-color 着色 */
+  background-color: var(--star-inactive-color, #dcdcdc);
+}
+
+.star-fg {
+  /* TODO-8: 用 --star-active-color 着色 */
+  background-color: var(--star-active-color, #f5a623);
+  /* mask 的尺寸要按整颗星算，否则裁剪一半时形状会被压扁 */
+  -webkit-mask-size: var(--star-size, 48rpx) 100%;
+  mask-size: var(--star-size, 48rpx) 100%;
+  -webkit-mask-position: left center;
+  mask-position: left center;
+}
+
+.star-text {
+  margin-left: 12rpx;
+  font-size: 24rpx;
+  color: var(--star-text-color, #8c8c8c);
+}

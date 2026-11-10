@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/poster/poster",
+    "pages/native/native",
+    "pages/feed/feed",
+    "pages/webview/webview"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#551645",
+    "navigationBarTitleText": "实验十 · 原生与跨端",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f7"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

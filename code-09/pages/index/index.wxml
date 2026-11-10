@@ -1,0 +1,43 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">优化档位</view>
+    <radio-group bindchange="onLevel">
+      <label class="opt"><radio value="L0" checked />L0 基线</label>
+      <label class="opt"><radio value="L1" />L1 字段裁剪</label>
+      <label class="opt"><radio value="L2" />L2 分页增量</label>
+      <label class="opt"><radio value="L3" />L3 虚拟列表</label>
+    </radio-group>
+    <button class="btn btn--ghost" bindtap="dumpStat">打印 setData 统计</button>
+    <button class="btn btn--ghost" bindtap="countNodes">统计节点数</button>
+    <view class="kv"><text class="kv__k">首屏耗时</text><text class="kv__v">{{firstPaint}}ms</text></view>
+    <view class="kv"><text class="kv__k">节点数</text><text class="kv__v">{{nodeCount}}</text></view>
+  </view>
+
+  <!-- 看板：放在分包里，componentPlaceholder 提供占位 -->
+  <view class="card">
+    <dashboard />
+  </view>
+
+  <!-- TODO-21: 骨架屏 -->
+  <block wx:if="{{loading}}">
+    <view class="card"><skeleton /></view>
+  </block>
+
+  <block wx:else>
+    <!-- L3：虚拟列表 -->
+    <virtual-list wx:if="{{level === 'L3'}}" items="{{list}}" item-height="{{200}}" buffer="{{3}}" />
+
+    <!-- L0/L1/L2：普通列表 -->
+    <view wx:else class="card">
+      <view wx:for="{{list}}" wx:key="id" class="row" data-id="{{item.id}}" bindtap="goDetail">
+        <!-- TODO-20: 优化图片 —— 固定宽高 / lazy-load / CDN 裁剪 / webp / 错误兜底 -->
+        <image class="row__img" src="{{item.cover}}" mode="aspectFill" />
+        <view class="row__body">
+          <view class="row__title">{{item.title}}</view>
+          <view class="row__price">{{item.priceText || item.priceInCent}}</view>
+        </view>
+      </view>
+      <view wx:if="{{level === 'L2' && hasMore}}" class="hint" bindtap="loadMore">加载更多…</view>
+    </view>
+  </block>
+</view>

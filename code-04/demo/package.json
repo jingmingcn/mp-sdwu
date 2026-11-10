@@ -1,0 +1,9 @@
+{
+  "name": "mp-sdwu-lab-04-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "实验四 组件包使用方",
+  "dependencies": {
+    "sdwu-ui": "file:../sdwu-ui"
+  }
+}

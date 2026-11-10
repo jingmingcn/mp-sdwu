@@ -1,0 +1,11 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">跨页同步验证</view>
+    <view class="kv"><text class="kv__k">购物车件数</text><text class="kv__v">{{count}}</text></view>
+    <view class="kv"><text class="kv__k">已选合计</text><text class="kv__v">{{totalText}}</text></view>
+    <view class="hint">
+      本页**没有**任何 onShow 手动同步代码。
+      如果数据是准的，说明 MobX 的响应式生效了。
+    </view>
+  </view>
+</view>

@@ -1,0 +1,29 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">观测说明</view>
+    <view class="hint">
+      打开控制台，依次完成四个场景：\n
+      ① 冷启动进入本页 ② navigateTo 到子页再返回\n
+      ③ 按 Home 键切后台 5 秒再切回 ④ 返回上一页
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="box">计时器已运行 {{tick}} 秒</view>
+    <probe label="A" />
+    <probe label="B" />
+  </view>
+
+  <view class="card">
+    <button class="btn" bindtap="goNext">② navigateTo 到子页</button>
+    <button class="btn btn--ghost" bindtap="back">④ 返回上一页</button>
+  </view>
+
+  <view class="card">
+    <view class="card__title">TODO-6 清理逻辑</view>
+    <view class="hint">
+      把 onUnload 里的 clearInterval 注释掉，进入本页 5 秒后返回，
+      观察控制台出现的错误信息并记录原文。
+    </view>
+  </view>
+</view>

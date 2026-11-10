@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <!-- 背景 -->
+  <rect width="900" height="520" fill="#fafafa"/>
+
+  <!-- ========== 逻辑层 ========== -->
+  <rect x="40" y="60" width="280" height="280" rx="12" fill="#e3f2fd" stroke="#1565c0" stroke-width="2.5"/>
+  <text x="180" y="95" text-anchor="middle" font-size="18" font-weight="bold" fill="#0d47a1">逻辑层 AppService</text>
+  <text x="180" y="118" text-anchor="middle" font-size="13" fill="#1565c0">（独立 JS 线程）</text>
+
+  <!-- 逻辑层内部 -->
+  <rect x="70" y="145" width="220" height="50" rx="8" fill="#bbdefb" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="180" y="176" text-anchor="middle" font-size="15" fill="#0d47a1">JavaScript 业务逻辑</text>
+
+  <rect x="70" y="210" width="220" height="45" rx="8" fill="#bbdefb" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="180" y="238" text-anchor="middle" font-size="14" fill="#0d47a1">Page / Component 数据</text>
+
+  <rect x="70" y="270" width="220" height="45" rx="8" fill="#bbdefb" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="180" y="298" text-anchor="middle" font-size="14" fill="#0d47a1">微信 API 调用</text>
+
+  <!-- ========== Native 层 ========== -->
+  <rect x="360" y="160" width="180" height="120" rx="12" fill="#fff3e0" stroke="#ef6c00" stroke-width="2.5"/>
+  <text x="450" y="205" text-anchor="middle" font-size="16" font-weight="bold" fill="#e65100">Native 层</text>
+  <text x="450" y="235" text-anchor="middle" font-size="15" fill="#ef6c00">JSBridge</text>
+  <text x="450" y="258" text-anchor="middle" font-size="13" fill="#ef6c00">通信桥梁</text>
+
+  <!-- ========== 视图层 ========== -->
+  <rect x="580" y="60" width="280" height="280" rx="12" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+  <text x="720" y="95" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b5e20">视图层 WebView</text>
+  <text x="720" y="118" text-anchor="middle" font-size="13" fill="#2e7d32">（渲染线程）</text>
+
+  <!-- 视图层内部 -->
+  <rect x="610" y="145" width="220" height="50" rx="8" fill="#c8e6c9" stroke="#388e3c" stroke-width="1.5"/>
+  <text x="720" y="176" text-anchor="middle" font-size="15" fill="#1b5e20">WXML 结构</text>
+
+  <rect x="610" y="210" width="220" height="45" rx="8" fill="#c8e6c9" stroke="#388e3c" stroke-width="1.5"/>
+  <text x="720" y="238" text-anchor="middle" font-size="14" fill="#1b5e20">WXSS 样式</text>
+
+  <rect x="610" y="270" width="220" height="45" rx="8" fill="#c8e6c9" stroke="#388e3c" stroke-width="1.5"/>
+  <text x="720" y="298" text-anchor="middle" font-size="14" fill="#1b5e20">组件树 / 渲染</text>
+
+  <!-- ========== 箭头：setData ========== -->
+  <defs>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef6c00"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1565c0"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2e7d32"/>
+    </marker>
+  </defs>
+
+  <!-- 逻辑 → Native -->
+  <line x1="320" y1="200" x2="360" y2="200" stroke="#ef6c00" stroke-width="2.5" marker-end="url(#arrowOrange)"/>
+  <text x="340" y="185" text-anchor="middle" font-size="12" fill="#e65100">setData</text>
+
+  <!-- Native → 视图 -->
+  <line x1="540" y1="200" x2="580" y2="200" stroke="#ef6c00" stroke-width="2.5" marker-end="url(#arrowOrange)"/>
+  <text x="560" y="185" text-anchor="middle" font-size="12" fill="#e65100">渲染</text>
+
+  <!-- 视图 → Native（事件） -->
+  <line x1="580" y1="250" x2="540" y2="250" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+  <text x="560" y="275" text-anchor="middle" font-size="12" fill="#2e7d32">事件</text>
+
+  <!-- Native → 逻辑（回调） -->
+  <line x1="360" y1="250" x2="320" y2="250" stroke="#1565c0" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+  <text x="340" y="275" text-anchor="middle" font-size="12" fill="#1565c0">回调</text>
+
+  <!-- 底部说明 -->
+  <text x="450" y="400" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">微信小程序双线程架构</text>
+  <text x="450" y="430" text-anchor="middle" font-size="13" fill="#666">逻辑层负责业务逻辑，视图层负责渲染，通过 Native JSBridge 进行通信</text>
+</svg>

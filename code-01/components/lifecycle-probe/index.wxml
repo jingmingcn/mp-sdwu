@@ -1,0 +1,3 @@
+<view class="probe">
+  <text>子组件 lifecycle-probe（label={{label}}）</text>
+</view>

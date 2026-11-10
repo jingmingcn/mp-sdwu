@@ -1,0 +1,1 @@
+<view class="counter" catchtap="inc">计数 {{count}}</view>

@@ -1,0 +1,6 @@
+.g { display: flex; align-items: center; gap: 16rpx; }
+.g__info { flex: 1; }
+.g__title { font-size: 28rpx; }
+.g__price { color: #c0392b; font-size: 26rpx; margin-top: 6rpx; }
+.g__stock { color: #999; font-size: 22rpx; }
+.g__add { flex: none; }

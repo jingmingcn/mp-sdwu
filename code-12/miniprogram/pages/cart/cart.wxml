@@ -1,0 +1,7 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">购物车{{v === '2' ? '（新版）' : ''}}</view>
+    <view class="kv"><text class="kv__k">件数</text><text class="kv__v">{{count}}</text></view>
+    <view class="kv"><text class="kv__k">合计</text><text class="kv__v">{{totalText}}</text></view>
+  </view>
+</view>

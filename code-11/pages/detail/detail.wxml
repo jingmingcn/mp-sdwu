@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="card">
+    <view class="card__title">{{msg.authorName}}</view>
+    <view class="hint">{{msg.content}}</view>
+  </view>
+  <view class="card">
+    <view class="card__title">评论（{{comments.length}}）</view>
+    <view class="hint" wx:for="{{comments}}" wx:key="_id">{{item.authorName}}：{{item.content}}</view>
+    <input class="in" placeholder="写评论…" value="{{draft}}" bindinput="onInput" />
+    <button class="btn" bindtap="send">发表</button>
+  </view>
+</view>

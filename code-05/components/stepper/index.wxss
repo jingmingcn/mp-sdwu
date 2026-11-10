@@ -1,0 +1,4 @@
+.stepper { display: inline-flex; align-items: center; border: 2rpx solid #e0e0e0; border-radius: 8rpx; overflow: hidden; }
+.stepper__btn { width: 56rpx; height: 48rpx; line-height: 48rpx; text-align: center; background: #fafafa; font-size: 28rpx; }
+.stepper__btn.is-off { color: #ccc; }
+.stepper__in { width: 72rpx; height: 48rpx; text-align: center; font-size: 24rpx; }

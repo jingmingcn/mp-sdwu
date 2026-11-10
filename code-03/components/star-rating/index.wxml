@@ -1,0 +1,18 @@
+<view class="star-rating" style="--gap:{{gap}}rpx">
+  <view wx:for="{{stars}}" wx:key="index"
+        class="star star-class"
+        style="width:{{size}}rpx;height:{{size}}rpx"
+        data-index="{{index}}"
+        bindtap="onTap">
+    <!--
+      TODO-1: 用两层 view 叠加实现半星
+        底层 star-bg：灰色整星
+        上层 star-fg：金色，宽度按 item.ratio 裁剪（配合 overflow: hidden）
+      注意：不要用两个不同的图标，那样无法支持任意比例。
+    -->
+    <view class="star-bg"></view>
+    <view class="star-fg" style="width:{{item.ratio * 100}}%"></view>
+  </view>
+
+  <text wx:if="{{text}}" class="star-text text-class">{{text}}</text>
+</view>
