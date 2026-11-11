@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="420" viewBox="0 0 620 420">
+  <defs>
+    <style>
+      .box { fill: #ffffff; stroke: #333; stroke-width: 2; }
+      .title { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 16px; font-weight: 600; fill: #1a1a1a; }
+      .desc { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 14px; fill: #333; }
+      .header { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 15px; font-weight: 600; fill: #fff; }
+    </style>
+  </defs>
+
+  <!-- 整体外框 -->
+  <rect x="40" y="30" width="540" height="360" rx="6" class="box" fill="#fafafa"/>
+
+  <!-- 视图层 -->
+  <rect x="50" y="40" width="520" height="80" rx="4" fill="#4A90E2"/>
+  <text x="70" y="65" class="header">视图层  pages/ + components/</text>
+  <text x="70" y="95" class="desc" fill="#fff">只做：绑定数据、响应事件、调用 store/service</text>
+
+  <!-- 状态层 -->
+  <rect x="50" y="130" width="520" height="90" rx="4" fill="#50C878"/>
+  <text x="70" y="155" class="header">状态层  stores/</text>
+  <text x="70" y="185" class="desc" fill="#fff">只做：客户端状态 + 派生计算 + action</text>
+  <text x="70" y="208" class="desc" fill="#fff">不依赖 wx.*，可单测</text>
+
+  <!-- 服务层 -->
+  <rect x="50" y="230" width="520" height="80" rx="4" fill="#F5A623"/>
+  <text x="70" y="255" class="header">服务层  services/</text>
+  <text x="70" y="285" class="desc" fill="#fff">只做：调接口、组装业务数据、缓存策略</text>
+
+  <!-- 基础层 -->
+  <rect x="50" y="320" width="520" height="60" rx="4" fill="#7B68EE"/>
+  <text x="70" y="345" class="header">基础层  utils/ + config/ + request/</text>
+  <text x="70" y="368" class="desc" fill="#fff">只做：纯函数、常量、HTTP 封装</text>
+</svg>
